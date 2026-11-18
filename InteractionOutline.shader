@@ -1,4 +1,3 @@
-
 Shader "Custom/URP/InteractionOutline"
 {
     Properties

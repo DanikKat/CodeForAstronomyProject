@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -107,10 +106,6 @@ public class TelescopeObservation : MonoBehaviour
     private readonly List<Vector2> backgroundStars =
         new List<Vector2>();
 
-    // --------------------------------
-    // CONSTELLATION CREATION
-    // --------------------------------
-
     void Reset()
     {
         FillOctoberConstellations();
@@ -119,7 +114,6 @@ public class TelescopeObservation : MonoBehaviour
     [ContextMenu("Rebuild Realistic October Constellations")]
     public void FillOctoberConstellations()
     {
-        // Preserve discovered states by name.
         HashSet<string> discoveredNames =
             new HashSet<string>();
 
@@ -134,10 +128,6 @@ public class TelescopeObservation : MonoBehaviour
 
         constellations = new List<ConstellationDefinition>();
 
-        // All points use a local coordinate system.
-        // Lines are explicit pairs of star indices.
-
-        // URSA MAJOR: Big Dipper
         AddFigure("Большая Медведица",
             "Большой Ковш — семь ярких звёзд, помогающих найти Полярную звезду.",
             new int[] {
@@ -149,7 +139,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,5, 5,6, 6,3
             });
 
-        // URSA MINOR
         AddFigure("Малая Медведица",
             "Малый Ковш. На конце его ручки находится Полярная звезда.",
             new int[] {
@@ -161,7 +150,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,5, 5,6, 6,3
             });
 
-        // CASSIOPEIA: W
         AddFigure("Кассиопея",
             "Пять ярких звёзд образуют узнаваемую фигуру W.",
             new int[] {
@@ -171,7 +159,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,3, 3,4
             });
 
-        // CEPHEUS: house
         AddFigure("Цефей",
             "Фигура напоминает домик с пятиугольной крышей.",
             new int[] {
@@ -181,7 +168,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,3, 3,4, 4,0
             });
 
-        // DRACO: winding chain
         AddFigure("Дракон",
             "Длинное извилистое созвездие около Малой Медведицы.",
             new int[] {
@@ -195,7 +181,6 @@ public class TelescopeObservation : MonoBehaviour
                 8,9
             });
 
-        // PEGASUS: Great Square and extension
         AddFigure("Пегас",
             "Большой квадрат Пегаса — характерная фигура осеннего неба.",
             new int[] {
@@ -207,7 +192,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 2,5
             });
 
-        // ANDROMEDA
         AddFigure("Андромеда",
             "Цепочка ярких звёзд, рядом с которой расположена галактика M31.",
             new int[] {
@@ -219,7 +203,6 @@ public class TelescopeObservation : MonoBehaviour
                 2,4, 4,5, 1,6
             });
 
-        // PERSEUS
         AddFigure("Персей",
             "Разветвлённая цепочка звёзд с известной переменной звездой Алголь.",
             new int[] {
@@ -231,7 +214,6 @@ public class TelescopeObservation : MonoBehaviour
                 2,5, 5,6, 2,7
             });
 
-        // LACERTA
         AddFigure("Ящерица",
             "Небольшая зигзагообразная цепочка тусклых звёзд.",
             new int[] {
@@ -242,7 +224,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,3, 3,4, 4,5
             });
 
-        // TRIANGULUM
         AddFigure("Треугольник",
             "Три яркие звезды образуют вытянутый треугольник.",
             new int[] {
@@ -252,7 +233,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,0
             });
 
-        // CYGNUS: Northern Cross
         AddFigure("Лебедь",
             "Северный Крест — фигура в созвездии Лебедя. Денеб находится на его конце.",
             new int[] {
@@ -264,7 +244,6 @@ public class TelescopeObservation : MonoBehaviour
                 4,2, 2,5, 2,6, 2,7
             });
 
-        // LYRA
         AddFigure("Лира",
             "Вега — ярчайшая звезда Лиры. Остальные основные звёзды образуют параллелограмм.",
             new int[] {
@@ -274,7 +253,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,3, 3,4, 4,1
             });
 
-        // AQUILA
         AddFigure("Орёл",
             "Альтаир находится в центральной части созвездия Орла.",
             new int[] {
@@ -286,7 +264,6 @@ public class TelescopeObservation : MonoBehaviour
                 4,2, 2,5, 4,6, 5,7
             });
 
-        // DELPHINUS
         AddFigure("Дельфин",
             "Небольшой ромб с цепочкой звёзд, напоминающий дельфина.",
             new int[] {
@@ -298,7 +275,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,0, 3,5
             });
 
-        // HERCULES
         AddFigure("Геркулес",
             "Центральная фигура — характерный четырёхугольник.",
             new int[] {
@@ -310,7 +286,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,4, 1,5, 3,6, 2,7
             });
 
-        // PISCES
         AddFigure("Рыбы",
             "Две группы звёзд связаны длинной извилистой цепочкой.",
             new int[] {
@@ -324,7 +299,6 @@ public class TelescopeObservation : MonoBehaviour
                 7,8, 8,9, 9,10, 10,11
             });
 
-        // AQUARIUS
         AddFigure("Водолей",
             "Большое зодиакальное созвездие с фигурой кувшина и расходящимися цепочками.",
             new int[] {
@@ -337,7 +311,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,5, 3,6, 6,7, 6,8
             });
 
-        // CAPRICORNUS
         AddFigure("Козерог",
             "Звёзды образуют широкую вытянутую фигуру, похожую на треугольник.",
             new int[] {
@@ -349,7 +322,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,5, 5,6
             });
 
-        // CETUS
         AddFigure("Кит",
             "Крупное осеннее созвездие с головой и длинным телом.",
             new int[] {
@@ -362,7 +334,6 @@ public class TelescopeObservation : MonoBehaviour
                 4,5, 5,6, 6,7, 7,8, 8,9
             });
 
-        // ARIES
         AddFigure("Овен",
             "Небольшая изогнутая цепочка из нескольких ярких звёзд.",
             new int[] {
@@ -372,7 +343,6 @@ public class TelescopeObservation : MonoBehaviour
                 0,1, 1,2, 2,3, 3,4
             });
 
-        // TAURUS: V of Hyades and horns
         AddFigure("Телец",
             "Гиады образуют V-образную фигуру; Альдебаран — яркая звезда поблизости.",
             new int[] {
@@ -384,7 +354,6 @@ public class TelescopeObservation : MonoBehaviour
                 2,4, 4,5, 2,6
             });
 
-        // ORION: shoulders, belt, legs
         AddFigure("Орион",
             "Три звезды пояса, Бетельгейзе, Беллатрикс, Ригель и Саиф образуют узнаваемую фигуру.",
             new int[] {
@@ -398,7 +367,6 @@ public class TelescopeObservation : MonoBehaviour
                 2,5, 4,6, 3,7
             });
 
-        // AURIGA
         AddFigure("Возничий",
             "Пятиугольная фигура с яркой звездой Капеллой.",
             new int[] {
@@ -410,7 +378,6 @@ public class TelescopeObservation : MonoBehaviour
                 3,4, 4,5, 5,0
             });
 
-        // GEMINI
         AddFigure("Близнецы",
             "Две почти параллельные звёздные цепочки начинаются от Кастора и Поллукса.",
             new int[] {
@@ -426,7 +393,6 @@ public class TelescopeObservation : MonoBehaviour
                 2,3, 4,8
             });
 
-        // CORONA BOREALIS
         AddFigure("Северная Корона",
             "Полукруглая дуга ярких звёзд с Альфеккой.",
             new int[] {
@@ -477,10 +443,6 @@ public class TelescopeObservation : MonoBehaviour
         constellations.Add(c);
     }
 
-    // --------------------------------
-    // SPREAD OBJECTS THROUGH SKY
-    // --------------------------------
-
     [ContextMenu("Redistribute Constellations Only")]
     public void DistributeConstellations()
     {
@@ -494,7 +456,6 @@ public class TelescopeObservation : MonoBehaviour
             Vector2 best = Vector2.one * 0.5f;
             float bestDistance = -1f;
 
-            // Sample many irregular positions, not rows.
             for (int attempt = 0; attempt < 1200; attempt++)
             {
                 Vector2 candidate = new Vector2(
@@ -538,10 +499,6 @@ public class TelescopeObservation : MonoBehaviour
             constellation.skyPosition = best;
         }
     }
-
-    // --------------------------------
-    // INITIALIZATION
-    // --------------------------------
 
     void Awake()
     {
@@ -681,10 +638,6 @@ public class TelescopeObservation : MonoBehaviour
         circleMask.SetPixels(maskPixels);
         circleMask.Apply();
     }
-
-    // --------------------------------
-    // GUI
-    // --------------------------------
 
     void InitializeGUI()
     {
@@ -846,10 +799,6 @@ public class TelescopeObservation : MonoBehaviour
         messageTimer = 2.5f;
     }
 
-    // --------------------------------
-    // SKY COORDINATES
-    // --------------------------------
-
     Rect GetScopeRect()
     {
         float radius = Mathf.Min(
@@ -934,10 +883,6 @@ public class TelescopeObservation : MonoBehaviour
         }
     }
 
-    // --------------------------------
-    // DRAW HELPERS
-    // --------------------------------
-
     void DrawRect(Rect rect, Color color)
     {
         Color oldColor = GUI.color;
@@ -1004,10 +949,6 @@ public class TelescopeObservation : MonoBehaviour
     {
         GUI.DrawTexture(rect, panelTexture);
     }
-
-    // --------------------------------
-    // ONGUI
-    // --------------------------------
 
     void OnGUI()
     {
@@ -1084,7 +1025,6 @@ public class TelescopeObservation : MonoBehaviour
 
         GUI.DrawTexture(scope, skyTexture);
 
-        // Background field stars
         foreach (Vector2 star in backgroundStars)
         {
             Vector2 point = SkyToScreen(star, scope);
@@ -1181,7 +1121,6 @@ public class TelescopeObservation : MonoBehaviour
 
         GUI.DrawTexture(scope, circleMask);
 
-        // Central targeting reticle
         DrawRect(
             new Rect(
                 center.x - 12f, center.y,

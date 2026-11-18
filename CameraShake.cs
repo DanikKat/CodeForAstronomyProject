@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 
@@ -20,10 +19,8 @@ public class CameraShake : MonoBehaviour
 
     void LateUpdate()
     {
-        // Restore position before the previous shake.
         transform.localPosition -= appliedOffset;
 
-        // Apply the new shake.
         appliedOffset = currentOffset;
         transform.localPosition += appliedOffset;
     }

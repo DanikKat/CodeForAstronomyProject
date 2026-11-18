@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -161,10 +160,6 @@ public class ResearchBooksManager : MonoBehaviour
             ? notesData.notes.Count
             : 0;
 
-    // --------------------------------
-    // INITIALIZATION
-    // --------------------------------
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -219,10 +214,6 @@ public class ResearchBooksManager : MonoBehaviour
         }
     }
 
-    // --------------------------------
-    // BOOK INVENTORY
-    // --------------------------------
-
     public bool HasBook(ResearchBookType type)
     {
         return type == ResearchBookType.Diary
@@ -252,7 +243,6 @@ public class ResearchBooksManager : MonoBehaviour
         if (quizMode && type == ResearchBookType.Diary)
             return;
 
-        // Do not interrupt other interaction systems.
         if (playerMovement != null &&
             !playerMovement.enabled)
         {
@@ -323,13 +313,8 @@ public class ResearchBooksManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 ChangePage(-1);
         }
-
-        // Do not close the journal with N.
-        // Otherwise typing the letter N into a note
-        // could close the journal accidentally.
     }
 
-    // Called by the future final quiz.
     public void SetQuizMode(bool active)
     {
         quizMode = active;
@@ -337,10 +322,6 @@ public class ResearchBooksManager : MonoBehaviour
         if (active && IsDiaryOpen)
             CloseBook();
     }
-
-    // --------------------------------
-    // AUTOMATIC RESEARCH
-    // --------------------------------
 
     void ScanResearch()
     {
@@ -524,10 +505,6 @@ public class ResearchBooksManager : MonoBehaviour
         diaryScroll = Vector2.zero;
     }
 
-    // --------------------------------
-    // NOTES: LOAD / SAVE
-    // --------------------------------
-
     void LoadNotes()
     {
         notesData = new PlayerNotesData();
@@ -570,8 +547,6 @@ public class ResearchBooksManager : MonoBehaviour
 
     public List<PlayerNote> GetNotes()
     {
-        // Return a copy to prevent accidental changes
-        // without saving.
         List<PlayerNote> copy = new List<PlayerNote>();
 
         foreach (PlayerNote note in notesData.notes)
@@ -589,10 +564,6 @@ public class ResearchBooksManager : MonoBehaviour
 
         return copy;
     }
-
-    // --------------------------------
-    // NOTES: EDITING
-    // --------------------------------
 
     void ClearEditor()
     {
@@ -706,10 +677,6 @@ public class ResearchBooksManager : MonoBehaviour
 
         statusMessage = "Заметка удалена.";
     }
-
-    // --------------------------------
-    // GUI STYLES
-    // --------------------------------
 
     void SetTextColor(GUIStyle style, Color color)
     {
@@ -837,10 +804,6 @@ public class ResearchBooksManager : MonoBehaviour
         GUI.contentColor = oldContentColor;
     }
 
-    // --------------------------------
-    // MAIN GUI
-    // --------------------------------
-
     void OnGUI()
     {
         if (!bookOpen)
@@ -920,10 +883,6 @@ public class ResearchBooksManager : MonoBehaviour
 
         return page;
     }
-
-    // --------------------------------
-    // DIARY UI
-    // --------------------------------
 
     void DrawDiary()
     {
@@ -1111,10 +1070,6 @@ public class ResearchBooksManager : MonoBehaviour
             pageStyle
         );
     }
-
-    // --------------------------------
-    // JOURNAL UI
-    // --------------------------------
 
     void DrawJournal()
     {
@@ -1328,8 +1283,6 @@ public class ResearchBooksManager : MonoBehaviour
             Mathf.Max(80f, buttonsY - rect.y - 148f)
         );
 
-        // TextArea is interactive; let Unity handle
-        // scrolling and caret movement.
         GUI.SetNextControlName("NoteContent");
 
         string newContent = GUI.TextArea(
@@ -1421,10 +1374,6 @@ public class ResearchBooksManager : MonoBehaviour
             );
         }
     }
-
-    // --------------------------------
-    // CLEANUP
-    // --------------------------------
 
     void OnDisable()
     {

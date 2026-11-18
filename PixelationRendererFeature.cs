@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -148,14 +147,12 @@ public class PixelationRendererFeature : ScriptableRendererFeature
                 pixelSize
             );
 
-            // Copy camera image into temporary texture
             Blitter.BlitCameraTexture(
                 cmd,
                 cameraTarget,
                 tempTexture
             );
 
-            // Apply pixelation and output to camera
             Blitter.BlitCameraTexture(
                 cmd,
                 tempTexture,

@@ -1,4 +1,3 @@
-
 Shader "Hidden/URP/Pixelation"
 {
     Properties
@@ -27,7 +26,6 @@ Shader "Hidden/URP/Pixelation"
             #pragma vertex Vert
             #pragma fragment Frag
 
-            // ВАЖНО: Core.hlsl должен идти первым!
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"

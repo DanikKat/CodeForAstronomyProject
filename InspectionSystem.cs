@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -75,10 +74,6 @@ public class InspectionSystem : MonoBehaviour
         UpdateBlur();
     }
 
-    // -------------------------
-    // OBJECT DETECTION
-    // -------------------------
-
     void DetectObject()
     {
         target = null;
@@ -105,10 +100,6 @@ public class InspectionSystem : MonoBehaviour
             BeginInspection(target);
     }
 
-    // -------------------------
-    // PANEL ANIMATION
-    // -------------------------
-
     void UpdatePanelAnimation()
     {
         float targetAlpha =
@@ -123,10 +114,6 @@ public class InspectionSystem : MonoBehaviour
         if (panelAlpha <= 0.001f && target == null)
             displayedItem = null;
     }
-
-    // -------------------------
-    // BEGIN INSPECTION
-    // -------------------------
 
     void BeginInspection(InspectableObject item)
     {
@@ -146,10 +133,6 @@ public class InspectionSystem : MonoBehaviour
 
         CreatePreview(item);
     }
-
-    // -------------------------
-    // CREATE PREVIEW
-    // -------------------------
 
     void CreatePreview(InspectableObject item)
     {
@@ -232,10 +215,6 @@ public class InspectionSystem : MonoBehaviour
             Vector3.one * scale;
     }
 
-    // -------------------------
-    // COPY VISUALS
-    // -------------------------
-
     void CopyVisuals(
         Transform source,
         Transform parent,
@@ -299,10 +278,6 @@ public class InspectionSystem : MonoBehaviour
         }
     }
 
-    // -------------------------
-    // ROTATION
-    // -------------------------
-
     void HandleInspection()
     {
         if (Input.GetKeyDown(KeyCode.Escape) ||
@@ -338,10 +313,6 @@ public class InspectionSystem : MonoBehaviour
         }
     }
 
-    // -------------------------
-    // END INSPECTION
-    // -------------------------
-
     void EndInspection()
     {
         if (inspectedItem != null)
@@ -367,10 +338,6 @@ public class InspectionSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
-    // -------------------------
-    // BLUR
-    // -------------------------
 
     void CreateBlurVolume()
     {
@@ -428,10 +395,6 @@ public class InspectionSystem : MonoBehaviour
         }
     }
 
-    // -------------------------
-    // GUI STYLES
-    // -------------------------
-
     void InitializeStyles()
     {
         if (titleStyle != null)
@@ -462,10 +425,6 @@ public class InspectionSystem : MonoBehaviour
 
         panelTexture.Apply();
     }
-
-    // -------------------------
-    // GUI
-    // -------------------------
 
     void OnGUI()
     {
@@ -617,10 +576,6 @@ public class InspectionSystem : MonoBehaviour
             descriptionStyle
         );
     }
-
-    // -------------------------
-    // CLEANUP
-    // -------------------------
 
     void OnDisable()
     {

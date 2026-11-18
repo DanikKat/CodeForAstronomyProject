@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,10 +75,6 @@ public class MainMenuController : MonoBehaviour
     public bool IsMenuOpen => menuOpen;
     public bool HasGameStarted => gameStarted;
 
-    // --------------------------------
-    // INITIALIZATION
-    // --------------------------------
-
     void Awake()
     {
         if (playerMovement == null)
@@ -107,7 +102,6 @@ public class MainMenuController : MonoBehaviour
         if (!menuOpen)
             return;
 
-        // Keep mouse accessible in the menu.
         if (Cursor.lockState != CursorLockMode.None)
             Cursor.lockState = CursorLockMode.None;
 
@@ -137,10 +131,6 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    // --------------------------------
-    // MENU ACTIONS
-    // --------------------------------
-
     public void OpenMainMenu()
     {
         menuOpen = true;
@@ -149,7 +139,6 @@ public class MainMenuController : MonoBehaviour
 
         pressedButton = -1;
 
-        // Disable movement but keep the player camera.
         if (playerMovement != null)
         {
             playerMovement.enabled = false;
@@ -206,10 +195,6 @@ public class MainMenuController : MonoBehaviour
 #endif
     }
 
-    // --------------------------------
-    // JOURNAL DATA
-    // --------------------------------
-
     void LoadJournal()
     {
         savedNotes.Clear();
@@ -245,10 +230,6 @@ public class MainMenuController : MonoBehaviour
             );
         }
     }
-
-    // --------------------------------
-    // GUI STYLES
-    // --------------------------------
 
     void SetTextColor(GUIStyle style, Color color)
     {
@@ -341,10 +322,6 @@ public class MainMenuController : MonoBehaviour
         );
     }
 
-    // --------------------------------
-    // DRAWING HELPERS
-    // --------------------------------
-
     void DrawRect(Rect rect, Color color)
     {
         Color previous = GUI.color;
@@ -398,10 +375,6 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    // --------------------------------
-    // BUTTON INPUT
-    // --------------------------------
-
     bool DrawMenuButton(
         Rect rect,
         string label,
@@ -439,7 +412,6 @@ public class MainMenuController : MonoBehaviour
 
         DrawLabel(rect, label, buttonStyle);
 
-        // Mouse down.
         if (e.type == EventType.MouseDown &&
             e.button == 0 &&
             hovered)
@@ -465,10 +437,6 @@ public class MainMenuController : MonoBehaviour
 
         return false;
     }
-
-    // --------------------------------
-    // MAIN MENU SCREEN
-    // --------------------------------
 
     void DrawMainMenu()
     {
@@ -586,10 +554,6 @@ public class MainMenuController : MonoBehaviour
             smallStyle
         );
     }
-
-    // --------------------------------
-    // JOURNAL SCREEN
-    // --------------------------------
 
     void DrawJournal()
     {
@@ -767,10 +731,6 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    // --------------------------------
-    // ONGUI
-    // --------------------------------
-
     void OnGUI()
     {
         if (!menuOpen)
@@ -781,7 +741,6 @@ public class MainMenuController : MonoBehaviour
         Color previousContent = GUI.contentColor;
         bool previousEnabled = GUI.enabled;
 
-        // Menu draws over gameplay interfaces.
         GUI.depth = -1000;
         GUI.color = Color.white;
         GUI.contentColor = Color.white;

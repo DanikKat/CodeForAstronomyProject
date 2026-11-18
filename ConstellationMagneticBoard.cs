@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ConstellationMagneticBoard : MonoBehaviour
@@ -84,10 +83,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
     private GUIStyle hintStyle;
     private GUIStyle buttonStyle;
 
-    // ----------------------------------
-    // INITIALIZATION
-    // ----------------------------------
-
     void Awake()
     {
         if (playerCamera == null)
@@ -155,10 +150,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         magnetTexture.SetPixels(pixels);
         magnetTexture.Apply();
     }
-
-    // ----------------------------------
-    // UPDATE
-    // ----------------------------------
 
     void Update()
     {
@@ -274,10 +265,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
-    // ----------------------------------
-    // CONSTELLATIONS
-    // ----------------------------------
 
     List<ConstellationDefinition> GetConstellations()
     {
@@ -400,10 +387,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         }
     }
 
-    // ----------------------------------
-    // LAYOUT
-    // ----------------------------------
-
     Rect GetBoardRect()
     {
         float sidebarWidth = Mathf.Clamp(
@@ -459,10 +442,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         );
     }
 
-    // ----------------------------------
-    // ORIGINAL ONGUI MAGNET INPUT
-    // ----------------------------------
-
     void HandleBoardMouse(Rect rect)
     {
         if (selected == null ||
@@ -498,7 +477,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
                 }
             }
 
-            // Right mouse: remove magnet.
             if (e.button == 1)
             {
                 if (closest >= 0)
@@ -512,7 +490,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
                 return;
             }
 
-            // Left mouse: create or select.
             if (e.button == 0)
             {
                 if (closest >= 0)
@@ -564,10 +541,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
             draggingIndex = -1;
         }
     }
-
-    // ----------------------------------
-    // PUZZLE CHECK
-    // ----------------------------------
 
     List<Vector2> Normalize(List<Vector2> points)
     {
@@ -715,10 +688,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         notificationTimer = 3f;
     }
 
-    // ----------------------------------
-    // GUI STYLES
-    // ----------------------------------
-
     void InitializeGUI()
     {
         if (titleStyle != null)
@@ -755,10 +724,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         buttonStyle.fontSize = 15;
         buttonStyle.alignment = TextAnchor.MiddleCenter;
     }
-
-    // ----------------------------------
-    // DRAW HELPERS
-    // ----------------------------------
 
     void DrawRect(Rect rect, Color color)
     {
@@ -831,10 +796,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
         GUI.color = oldColor;
     }
 
-    // ----------------------------------
-    // REFERENCE
-    // ----------------------------------
-
     void DrawReference(Rect rect)
     {
         if (targetStars.Count == 0)
@@ -881,40 +842,30 @@ public class ConstellationMagneticBoard : MonoBehaviour
         }
     }
 
-    // ----------------------------------
-    // MAGNET RENDERING
-    // ----------------------------------
-
     void DrawMagnets(Rect board)
     {
         foreach (Vector2 uv in magnets)
         {
             Vector2 point = ToScreen(uv, board);
 
-            // Shadow.
             DrawCircle(
                 point + new Vector2(3f, 4f),
                 magnetSize + 8f,
                 new Color(0f, 0f, 0f, 0.55f)
             );
 
-            // Strong white magnet.
             DrawCircle(
                 point,
                 magnetSize,
                 magnetColor
             );
 
-            // Blue central detail.
             DrawCircle(
                 point,
                 magnetSize * 0.35f,
                 accentColor
             );
 
-            // Guaranteed visible center marker.
-            // Even if circle texture has a problem,
-            // this white square must be rendered.
             DrawRect(
                 new Rect(
                     point.x - 3f,
@@ -926,10 +877,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
             );
         }
     }
-
-    // ----------------------------------
-    // ONGUI
-    // ----------------------------------
 
     void OnGUI()
     {
@@ -1031,7 +978,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
 
         DrawRect(board, boardColor);
 
-        // Subtle background grid.
         for (float x = board.x; x < board.xMax; x += 50f)
         {
             DrawRect(
@@ -1048,10 +994,8 @@ public class ConstellationMagneticBoard : MonoBehaviour
             );
         }
 
-        // Original working input approach.
         HandleBoardMouse(board);
 
-        // Render magnets AFTER board and grid.
         DrawMagnets(board);
 
         GUI.Label(
@@ -1119,10 +1063,6 @@ public class ConstellationMagneticBoard : MonoBehaviour
             );
         }
     }
-
-    // ----------------------------------
-    // SIDEBAR
-    // ----------------------------------
 
     void DrawSidebar(Rect rect)
     {
